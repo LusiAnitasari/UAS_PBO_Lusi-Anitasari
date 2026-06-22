@@ -24,5 +24,12 @@ class KaryawanKontrak extends Karyawan {
     public function tampilanProfilKaryawan() {
         return "ID: " . $this->id_karyawan . " | Nama: " . $this->nama_karyawan . " | Status: Kontrak | Agensi: " . $this->agensiPenyalur . " | Durasi: " . $this->durasiKontrakBulanan . " Bulan";
     }
+
+    // Overriding method dari parent class Karyawan
+    public function hitungGajiBersih() {
+        // Logika Bisnis Kontrak: Murni dari kehadiran
+        $gajiMurni = $this->gajiDasarPerHari * $this->hariKerjaMasuk;
+        return $gajiMurni;
+    }
 }
 ?>

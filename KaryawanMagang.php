@@ -23,5 +23,13 @@ class KaryawanMagang extends Karyawan {
     public function tampilanProfilKaryawan() {
         return "ID: " . $this->id_karyawan . " | Nama: " . $this->nama_karyawan . " | Status: Magang | Program: " . $this->sertifikatKampusMerdeka . " | Uang Saku: Rp" . number_format($this->uangSakuBulanan, 0, ',', '.');
     }
+
+    // Overriding method dari parent class Karyawan
+    public function hitungGajiBersih() {
+        // Logika Bisnis Magang: Gaji harian + Uang Saku Bulanan
+        $gajiHarian = $this->gajiDasarPerHari * $this->hariKerjaMasuk;
+        $gajiTotal = $gajiHarian + $this->uangSakuBulanan;
+        return $gajiTotal;
+    }
 }
 ?>

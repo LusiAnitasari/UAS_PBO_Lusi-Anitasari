@@ -23,5 +23,13 @@ class KaryawanTetap extends Karyawan {
     public function tampilanProfilKaryawan() {
         return "ID: " . $this->id_karyawan . " | Nama: " . $this->nama_karyawan . " | Status: Tetap | Opsi Saham ID: " . $this->opsiSahamId . " | Tunjangan: Rp" . number_format($this->tunjanganKesehatan, 0, ',', '.');
     }
+
+    // Overriding method dari parent class Karyawan
+    public function hitungGajiBersih() {
+        // Logika Bisnis Tetap: Gaji harian + Tunjangan Kesehatan
+        $gajiPokok = $this->gajiDasarPerHari * $this->hariKerjaMasuk;
+        $gajiTotal = $gajiPokok + $this->tunjanganKesehatan;
+        return $gajiTotal;
+    }
 }
 ?>
